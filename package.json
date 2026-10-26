@@ -1,0 +1,41 @@
+{
+  "name": "recording-reminder",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./src/index.tsx",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build-bundle": "webpack --mode production",
+    "lint": "eslint ./src/*",
+    "lint:fix": "npm run lint -- --fix",
+    "start": "webpack serve --mode development"
+  },
+  "dependencies": {
+    "bigbluebutton-html-plugin-sdk": "1.0.0-beta.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-intl": "^7.1.14",
+    "styled-components": "^6.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "copy-webpack-plugin": "^14.0.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "ts-loader": "^9.6.2",
+    "typescript": "^5.9.3",
+    "webpack": "^5.112.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^6.1.0"
+  }
+}

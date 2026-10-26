@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-tsc/
+debian/.debhelper/
+debian/bbb-plugin-recording-reminder.substvars
+debian/bbb-plugin-recording-reminder/
+debian/debhelper-build-stamp
+debian/files
+debian/**/changelog.gz
+debian/**/md5sums
+debian/**/var/www/*
