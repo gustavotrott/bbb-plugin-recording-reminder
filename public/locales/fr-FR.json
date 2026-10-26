@@ -1,0 +1,9 @@
+{
+  "recordingReminderPlugin.toast.beforeStart": "N'oubliez pas de démarrer l'enregistrement !",
+  "recordingReminderPlugin.toast.beforeStartWithTime": "La réunion commence à {time}. N'oubliez pas de démarrer l'enregistrement !",
+  "recordingReminderPlugin.toast.late": "La réunion a déjà commencé ({time}) et n'est pas encore enregistrée. Démarrez l'enregistrement !",
+  "recordingReminderPlugin.modal.title": "C'est l'heure de commencer la réunion",
+  "recordingReminderPlugin.modal.description": "La réunion était prévue à {time}. N'oubliez pas de démarrer l'enregistrement !",
+  "recordingReminderPlugin.modal.hint": "Utilisez le bouton d'enregistrement en haut de l'écran.",
+  "recordingReminderPlugin.modal.confirm": "Compris"
+}

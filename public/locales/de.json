@@ -1,0 +1,9 @@
+{
+  "recordingReminderPlugin.toast.beforeStart": "Vergessen Sie nicht, die Aufzeichnung zu starten!",
+  "recordingReminderPlugin.toast.beforeStartWithTime": "Die Konferenz beginnt um {time}. Vergessen Sie nicht, die Aufzeichnung zu starten!",
+  "recordingReminderPlugin.toast.late": "Die Konferenz hat bereits begonnen ({time}) und wird noch nicht aufgezeichnet. Starten Sie die Aufzeichnung!",
+  "recordingReminderPlugin.modal.title": "Es ist Zeit, die Konferenz zu beginnen",
+  "recordingReminderPlugin.modal.description": "Die Konferenz war für {time} geplant. Vergessen Sie nicht, die Aufzeichnung zu starten!",
+  "recordingReminderPlugin.modal.hint": "Verwenden Sie die Aufzeichnungsschaltfläche oben auf dem Bildschirm.",
+  "recordingReminderPlugin.modal.confirm": "Verstanden"
+}

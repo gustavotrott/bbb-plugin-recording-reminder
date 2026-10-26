@@ -1,7 +1,7 @@
+import { IntlShape } from 'react-intl';
+
 export interface ReminderModalProps {
-  title: string;
-  description: string;
-  hint: string;
-  confirmLabel: string;
+  intl: IntlShape;
+  startTime: Date;
   onConfirm: () => void;
 }

@@ -6,8 +6,9 @@ import {
   pluginLogger,
 } from 'bigbluebutton-html-plugin-sdk';
 import { NotificationTypeUiCommand } from 'bigbluebutton-html-plugin-sdk/dist/cjs/ui-commands/notification/enums';
-import { defineMessages, IntlShape } from 'react-intl';
+import { defineMessages } from 'react-intl';
 import { useGetInternationalization } from '../../commons/hooks';
+import { formatStartTime } from '../../commons/utils';
 import ReminderModal from '../reminder-modal/component';
 import {
   MeetingRecordingSubscriptionResult,
@@ -32,26 +33,6 @@ const intlMessages = defineMessages({
     description: 'Periodic reminder shown after the scheduled meeting start',
     defaultMessage: 'The meeting has already started ({time}) and it is not being recorded yet. Start the recording!',
   },
-  modalTitle: {
-    id: 'recordingReminderPlugin.modal.title',
-    description: 'Title of the alert shown at the scheduled meeting start',
-    defaultMessage: 'It\'s time to start the meeting',
-  },
-  modalDescription: {
-    id: 'recordingReminderPlugin.modal.description',
-    description: 'Body of the alert shown at the scheduled meeting start',
-    defaultMessage: 'The meeting was scheduled for {time}. Don\'t forget to start the recording!',
-  },
-  modalHint: {
-    id: 'recordingReminderPlugin.modal.hint',
-    description: 'Hint on where to find the recording button',
-    defaultMessage: 'Use the recording button at the top of the screen.',
-  },
-  modalConfirm: {
-    id: 'recordingReminderPlugin.modal.confirm',
-    description: 'Button that closes the alert shown at the scheduled meeting start',
-    defaultMessage: 'Got it',
-  },
 });
 
 // How often the reminder state is evaluated
@@ -60,21 +41,12 @@ const TICK_INTERVAL_MS = 5000;
 const FIRST_REMINDER_DELAY_MS = 20000;
 const TOAST_AUTO_CLOSE_MS = 10000;
 
-const formatStartTime = (intl: IntlShape, startTime: Date) => {
-  const isToday = startTime.toDateString() === new Date().toDateString();
-  return intl.formatDate(startTime, isToday
-    ? { hour: '2-digit', minute: '2-digit' }
-    : {
-      day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit',
-    });
-};
-
 function RecordingReminder(
   { pluginUuid: uuid, config }: RecordingReminderProps,
 ): React.ReactElement {
   BbbPluginSdk.initialize(uuid);
   const pluginApi: PluginApi = BbbPluginSdk.getPluginApi(uuid);
-  const { intl } = useGetInternationalization(pluginApi);
+  const { intl, localeMessagesLoading } = useGetInternationalization(pluginApi);
 
   const { data: currentUser } = pluginApi.useCurrentUser() || {};
   const { data: recordingData } = pluginApi
@@ -160,17 +132,17 @@ function RecordingReminder(
     return () => clearInterval(interval);
   }, [isActive, intl, config]);
 
-  if (!isModalOpen || !intl || hasRecorded) return null;
+  if (!intl || localeMessagesLoading) return null;
+
+  if (!isModalOpen || hasRecorded) return null;
 
   return (
     <ReminderModal
-      title={intl.formatMessage(intlMessages.modalTitle)}
-      description={intl.formatMessage(intlMessages.modalDescription, {
-        time: formatStartTime(intl, config.startTime),
-      })}
-      hint={intl.formatMessage(intlMessages.modalHint)}
-      confirmLabel={intl.formatMessage(intlMessages.modalConfirm)}
-      onConfirm={() => setIsModalOpen(false)}
+      {...{
+        intl,
+        startTime: config.startTime,
+        onConfirm: () => setIsModalOpen(false),
+      }}
     />
   );
 }

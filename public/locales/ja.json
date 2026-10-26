@@ -1,0 +1,9 @@
+{
+  "recordingReminderPlugin.toast.beforeStart": "録画の開始をお忘れなく！",
+  "recordingReminderPlugin.toast.beforeStartWithTime": "会議は {time} に始まります。録画の開始をお忘れなく！",
+  "recordingReminderPlugin.toast.late": "会議はすでに始まっていますが（{time}）、まだ録画されていません。録画を開始してください！",
+  "recordingReminderPlugin.modal.title": "会議を始める時間です",
+  "recordingReminderPlugin.modal.description": "会議は {time} に予定されていました。録画の開始をお忘れなく！",
+  "recordingReminderPlugin.modal.hint": "画面上部の録画ボタンを使用してください。",
+  "recordingReminderPlugin.modal.confirm": "了解"
+}
